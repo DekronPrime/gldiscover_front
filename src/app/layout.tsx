@@ -1,10 +1,120 @@
 import type { Metadata } from "next";
-import { Exo_2 } from "next/font/google";
+import { Nunito, Exo_2, Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/src/components/layout/Header";
+import Footer from "@/src/components/layout/Footer";
 
-const geistMono = Exo_2({
-  variable: "--font-exo-2",
+//GOOGLE FONTS
+export const nunitoRegular = Nunito({
   subsets: ["latin"],
+  variable: "--font-nunito-regular",
+  display: "swap",
+  weight: "400",
+});
+
+export const nunitoSemibold = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito-semibold",
+  display: "swap",
+  weight: "600",
+});
+
+export const nunitoBold = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito-bold",
+  display: "swap",
+  weight: "700",
+});
+
+export const exo2Regular = Exo_2({
+  variable: "--font-exo2-regular",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+
+export const exo2Semibold = Exo_2({
+  variable: "--font-exo2-semibold",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "600",
+});
+export const exo2Bold = Exo_2({
+  variable: "--font-exo2-bold",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "700",
+});
+
+export const poppinsRegular = Poppins({
+  variable: "--font-poppins-regular",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+
+export const poppinsSemibold = Poppins({
+  variable: "--font-poppins-semibold",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "600",
+});
+
+export const poppinsBold = Poppins({
+  variable: "--font-poppins-bold",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "700",
+});
+
+// LOCAL FONTS
+export const agenorNeueRegular = localFont({
+  src: [
+    {
+      path: "../../public/fonts/AgenorNeue-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-agenor-neue-regular",
+  display: "swap",
+});
+
+export const londonBetweenRegular = localFont({
+  src: [
+    {
+      path: "../../public/fonts/LondonBetween.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-london-between-regular",
+  display: "swap",
+});
+
+export const londonMMRegular = localFont({
+  src: [
+    {
+      path: "../../public/fonts/LondonMM.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-london-mm-regular",
+  display: "swap",
+});
+
+export const londonTwoRegular = localFont({
+  src: [
+    {
+      path: "../../public/fonts/LondonTwo.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-london-two-regular",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -18,11 +128,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistMono.variable} ${geistMono.variable} antialiased bg-amber-200`}
-      >
-        {children}
+    <html
+      lang="en"
+      className={`
+        ${nunitoRegular.variable}
+        ${nunitoSemibold.variable}
+        ${nunitoBold.variable}
+        ${exo2Regular.variable}
+        ${exo2Semibold.variable}
+        ${exo2Bold.variable}
+        ${poppinsRegular.variable}
+        ${poppinsSemibold.variable}
+        ${poppinsBold.variable}
+        ${agenorNeueRegular.variable}
+        ${londonBetweenRegular.variable}
+        ${londonMMRegular.variable}
+        ${londonTwoRegular.variable}
+        `}
+    >
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <body className="min-h-dvh antialiased">
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
