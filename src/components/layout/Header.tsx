@@ -5,19 +5,23 @@ import MegaMenu from "./MegaMenu";
 
 import SearchLight from "@/public/icons/search-light.png";
 import SearchAccent from "@/public/icons/search-accent.png";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <>
       <header className="bg-foreground py-3">
         <div className="w-11/12 mx-auto border-1 flex justify-between items-center">
-          <Image
-            src={"/logo/gld-logo.svg"}
-            alt="GLD Logo"
-            width={305}
-            height={81}
-            draggable="false"
-          />
+          <Link href={"/"}>
+            <Image
+              src={"/logo/gld-logo.svg"}
+              alt="GLD Logo"
+              width={305}
+              height={81}
+              draggable="false"
+            />
+          </Link>
+
           <div className="inline-flex gap-3">
             <MegaMenu
               label="Movies"

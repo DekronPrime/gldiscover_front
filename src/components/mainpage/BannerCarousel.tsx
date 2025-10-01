@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Button from "../common/Button";
 import Chip from "../common/Chip";
 import MediaRate from "../common/MediaRate";
+import Link from "next/link";
 
 interface BannerCarouselProps {
   slides: {
@@ -68,7 +69,7 @@ export default function BannerCarousel({
   };
 
   return (
-    <div className="relative w-full h-[650px] overflow-hidden rounded-2xl">
+    <div className="relative w-full h-[575] overflow-hidden rounded-2xl">
       <div
         className="flex transition-transform duration-700 ease-in-out "
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -76,7 +77,7 @@ export default function BannerCarousel({
         onTouchEnd={handleTouchEnd}
       >
         {slides.map((slide) => (
-          <div key={slide.id} className="min-w-full h-[650px] relative">
+          <div key={slide.id} className="min-w-full h-[575] relative">
             <Image
               src={`https://image.tmdb.org/t/p/original${slide.backdrop_path}`}
               alt={slide.alt || slide.title}
@@ -89,7 +90,7 @@ export default function BannerCarousel({
               className="absolute inset-0 bg-gradient-to-r from-black/75 from-0% via-black/75 via-30% to-black/0 to-100% flex justify-between p-6 pb-12"
               draggable="false"
             >
-              <div className="relative max-w-[45%] h-full inline-flex flex-col justify-between">
+              <div className="relative max-w-[50%] h-full inline-flex flex-col justify-between">
                 <div className="flex flex-col gap-4">
                   <h1 className="font-agenorNeueRegular text-6xl text-balance line-clamp-2 text-ellipsis leading-[1.1]">
                     {slide.title}
@@ -100,7 +101,7 @@ export default function BannerCarousel({
                 </div>
                 <div>
                   <p
-                    className="line-clamp-5 text-ellipsis text-balance  leading-[1.3] font-nunitoRegular text-2xl"
+                    className="line-clamp-5 text-ellipsis text-balance  leading-[1.3] font-nunitoRegular text-xl"
                     title={slide.overview}
                   >
                     {slide.overview}
@@ -135,7 +136,7 @@ export default function BannerCarousel({
                     />
                   }
                   size="lg"
-                  className="group w-fit ml-auto flex items-center overflow-hidden transition-all duration-300"
+                  className="group w-fit ml-auto flex items-center overflow-hidden transition-all duration-300 gap-0 hover:gap-4"
                 >
                   <span
                     className="opacity-0 translate-x-2 max-w-0 
@@ -146,9 +147,11 @@ export default function BannerCarousel({
                     Play Trailer
                   </span>
                 </Button>
-                <Button variant="learnmore" size="xl">
-                  Learn More
-                </Button>
+                <Link href={`/media/${slide.id}?mediaType=${slide.media_type}`}>
+                  <Button variant="learnmore" size="xl">
+                    Learn More
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
