@@ -12,8 +12,10 @@ interface Movie {
 
 interface MovieCarouselSectionProps {
   movies: Movie[];
+  mediaType: "movie" | "tv";
   title: string;
   icon: StaticImageData;
+  expandable: boolean;
   itemsPerPage?: number;
   mode?: "light" | "dark";
   className?: string;
@@ -21,8 +23,10 @@ interface MovieCarouselSectionProps {
 
 const MovieCarouselSection: React.FC<MovieCarouselSectionProps> = ({
   movies,
+  mediaType = "movie",
   title,
   icon,
+  expandable = true,
   itemsPerPage = 4,
   mode = "light",
   className,
@@ -35,9 +39,16 @@ const MovieCarouselSection: React.FC<MovieCarouselSectionProps> = ({
       } ${className}`}
       {...props}
     >
-      <div className="flex flex-col gap-6">
-        <MovieCarouselTitle title={title} icon={icon} mode={mode} />
-        <MovieCarousel movies={movies} mode={mode} />
+      <div className="flex flex-col gap-5">
+        <div className="w-11/12 mx-auto">
+          <MovieCarouselTitle
+            title={title}
+            icon={icon}
+            expandable={expandable}
+            mode={mode}
+          />
+        </div>
+        <MovieCarousel movies={movies} mediaType={mediaType} mode={mode} />
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 import { cn } from "@/src/utils/cn";
 import Link from "next/link";
-import { URL } from "node:url";
 import React from "react";
 
 type ChipProps = {
